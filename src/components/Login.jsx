@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -12,6 +12,10 @@ import { Button } from "./ui/button";
 import { BeatLoader } from "react-spinners";
 import * as Yup from "yup";
 import Error from "../components/Error";
+import useFetch from "@/hooks/UseFetch";
+import { login } from "@/db/apiAuth";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { UrlState } from "@/Context";
 
 const Login = () => {
   const [errors, setErrors] = useState({});
@@ -19,11 +23,12 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  let [searchParams] = useSearchParams();
+  const longLink = searchParams.get("createNew");
 
   const handleLogin = async () => {
     setErrors({});
-    setLoading(true);
     try {
       const schema = Yup.object().shape({
         email: Yup.string()
@@ -36,15 +41,14 @@ const Login = () => {
 
       await schema.validate(formData, { abortEarly: false });
       
-      console.log("Login successful", formData);
+      // Call the login function
+      fnLogin();
     } catch (e) {
       const validationErrors = {};
       e.inner.forEach((err) => {
         validationErrors[err.path] = err.message;
       });
       setErrors(validationErrors);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -56,11 +60,21 @@ const Login = () => {
     }));
   };
 
+  const { data, error, loading, fn: fnLogin } = useFetch(login, formData);
+  const {fetchUser} = UrlState();
+  useEffect(() => {
+    if (!error && data) {
+      navigate(`/dashboard?${longLink ? `createNew=${longLink}` : ""}`);
+      fetchUser();
+    }
+  }, [data, error]);
+
   return (
     <Card>
       <CardHeader>
         <CardTitle>Login</CardTitle>
         <CardDescription>Enter your details to continue</CardDescription>
+        {error && <Error message={error.message} />}
       </CardHeader>
       <CardContent className="space-y-2">
         <div className="space-y-1">
