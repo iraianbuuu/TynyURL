@@ -2,7 +2,7 @@ import DeviceStats from "@/components/DeviceStats";
 import Location from "@/components/LocationStats";
 import {Button} from "@/components/ui/button";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
-import {UrlState} from "@/context";
+import {UrlState} from "@/Context";
 import {getClicksForUrl} from "@/db/apiClicks";
 import {deleteUrl, getUrl} from "@/db/apiUrl";
 import useFetch from "@/hooks/UseFetch";
@@ -70,7 +70,7 @@ const Link = () => {
       {(loading || loadingStats) && (
         <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
       )}
-      <div className="mx-4 flex flex-col gap-8 sm:flex-row justify-between">
+      <div className="mx-4flex flex-col gap-8 sm:flex-row justify-between">
         <div className="flex flex-col items-start gap-8 rounded-lg sm:w-2/5">
           <span className="text-3xl font-extrabold hover:underline cursor-pointer">
             {url?.title}
