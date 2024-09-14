@@ -94,7 +94,7 @@ export function CreateLink() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="font-bold text-2xl">Create New</DialogTitle>
+          <DialogTitle className="font-bold text-2xl">Create New Short URL</DialogTitle>
         </DialogHeader>
         {formValues?.longUrl && (
           <QRCode ref={ref} size={250} value={formValues?.longUrl} />
@@ -112,10 +112,11 @@ export function CreateLink() {
           placeholder="Enter your Long URL"
           value={formValues.longUrl}
           onChange={handleChange}
+          className="h-10"
         />
         {errors.longUrl && <Error message={errors.longUrl} />}
         <div className="flex items-center gap-2">
-          <Card className="p-2">trimrr.in</Card> /
+          <Card className="p-2">localhost:5173</Card> /
           <Input
             id="customUrl"
             placeholder="Custom Link (optional)"

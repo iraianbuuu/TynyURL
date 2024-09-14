@@ -1,69 +1,88 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
+import { Link2, Zap, Shield, BarChart3 } from "lucide-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
-  
-  const [longUrl,setLongUrl] = useState();
+  const [longUrl, setLongUrl] = useState();
   const navigate = useNavigate();
   const handleShorten = (e) => {
     e.preventDefault();
 
-    if(longUrl) navigate(`/auth?createNew=${longUrl}`);
-  }
-
+    if (longUrl) navigate(`/auth?createNew=${longUrl}`);
+  };
 
   return (
-    <div className="flex flex-col items-center">
-      <h3 className="my-10 sm:my-16 text-2xl sm:text-3xl lg:text-5xl text-black text-center font-extrabold">
-        Simplify Your Links, Amplify Your Reach! <br />
-        Shorten your URL Today🚀🚀🚀
+    <div className="flex flex-col items-center px-4 sm:px-8">
+      {/* Hero Section */}
+      <h3 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl lg:text-6xl">
+        Simplify Your Links, Amplify Your Reach!
       </h3>
-      <form onSubmit={handleShorten} className="sm:h-14 flex flex-col sm:flex-row w-full md:w-2/4 gap-4">
+      <p className="my-3 mx-auto text-center text-gray-500 md:text-xl dark:text-gray-400 max-w-3xl">
+        Create short, powerful links in seconds. Track, analyze, and optimize
+        your online presence with our advanced URL shortener.
+      </p>
+
+      {/* URL Form */}
+      <form
+        onSubmit={handleShorten}
+        className="my-3 w-full max-w-lg flex flex-col sm:flex-row gap-4"
+      >
         <Input
           type="url"
           value={longUrl}
           placeholder="Enter your URL"
-          onChange = {(e)=> setLongUrl(e.target.value)}
+          onChange={(e) => setLongUrl(e.target.value)}
           className="h-full flex-1 py-4 px-4"
         />
-        <Button 
-
-        className="h-full" type="submit" variant="destructive">
+        <Button className="h-full" type="submit" variant="destructive">
           Shorten
         </Button>
       </form>
-      <Accordion type="multiple" className="w-full my-11 md:px-11"collapsible>
-        <AccordionItem value="item-1">
-          <AccordionTrigger>How Does the URL Shortener Work?</AccordionTrigger>
-          <AccordionContent>
-          Our URL shortener takes long, complicated URLs and compresses them into short, user-friendly links. Simply paste your long link into the box, hit ‘Shorten,’ and instantly get a compact version. Use the short link in social media, emails, or wherever you need quick access. Plus, every click on your shortened URL is tracked, so you can monitor the performance of your shared content.
-          </AccordionContent>
-        </AccordionItem>
 
-        <AccordionItem value="item-2">
-          <AccordionTrigger>Why Should I Use a URL Shortener?</AccordionTrigger>
-          <AccordionContent>
-          Long URLs can look messy, are difficult to remember, and sometimes break when shared in emails or social media. A URL shortener makes sharing your links more efficient. It improves user experience, boosts engagement, and ensures compatibility across platforms. Whether you're managing marketing campaigns or just simplifying personal links, a short URL keeps things clean and professional.
-          </AccordionContent>
-        </AccordionItem>
-
-        <AccordionItem value="item-3">
-          <AccordionTrigger>Can I Track the Performance of My Shortened Links?</AccordionTrigger>
-          <AccordionContent>
-          Yes! Our service provides analytics for each shortened link, allowing you to track its performance. Get insights like the number of clicks, geographic location of visitors, device types, and more. This data helps you understand your audience’s behavior, optimize your campaigns, and improve the effectiveness of your shared links.
-          </AccordionContent>
-        </AccordionItem>
-
-      </Accordion>
+      {/* Why Choose Section */}
+      <section className="w-full py-8 md:py-16 lg:py-28 dark:bg-gray-800">
+        <div className="container px-4 md:px-6 mx-auto">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
+            Why Choose TynyURL?
+          </h2>
+          <div className="grid gap-6 items-center sm:grid-cols-2 lg:grid-cols-4">
+            {/* Feature 1 */}
+            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-white dark:bg-gray-700">
+              <Zap className="h-12 w-12 text-primary" />
+              <h3 className="text-xl font-bold text-center">Lightning Fast</h3>
+              <p className="text-sm text-center text-gray-500 dark:text-gray-400">
+                Create short links in seconds with customization.
+              </p>
+            </div>
+            {/* Feature 2 */}
+            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-white dark:bg-gray-700">
+              <Shield className="h-12 w-12 text-primary" />
+              <h3 className="text-xl font-bold text-center">Secure & Reliable</h3>
+              <p className="text-sm text-center text-gray-500 dark:text-gray-400">
+                Your links are safe and always accessible.
+              </p>
+            </div>
+            {/* Feature 3 */}
+            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-white dark:bg-gray-700">
+              <BarChart3 className="h-12 w-12 text-primary" />
+              <h3 className="text-xl font-bold text-center">Detailed Analytics</h3>
+              <p className="text-sm text-center text-gray-500 dark:text-gray-400">
+                Track clicks, locations, and more with our powerful dashboard.
+              </p>
+            </div>
+            {/* Feature 4 */}
+            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-white dark:bg-gray-700">
+              <Link2 className="h-12 w-12 text-primary" />
+              <h3 className="text-xl font-bold text-center">Custom Links</h3>
+              <p className="text-sm text-center text-gray-500 dark:text-gray-400">
+                Create branded short links with your own wish.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
