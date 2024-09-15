@@ -1,18 +1,17 @@
-import Header from '@/components/Header';
-import React from 'react'
-import { Outlet } from 'react-router-dom';
+import Header from "@/components/Header";
+import Footer from "@/pages/Footer";
+import React from "react";
+import { Outlet } from "react-router-dom";
 const AppLayout = () => {
   return (
     <div>
-        <main className='min-h-screen container'>
-            <Header/>
-            <Outlet/>
-        </main>
-        <div className='p-10 text-center bg-gray-800 mt-10'>
-         
-        </div>
+      <main className="min-h-screen container">
+        <Header />
+        <Outlet />
+      </main>
+    <Footer/>
     </div>
-  )
-}
+  );
+};
 
-export default AppLayout
+export default AppLayout;

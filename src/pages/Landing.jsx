@@ -3,7 +3,6 @@ import { Input } from "@/components/ui/input";
 import { Link2, Zap, Shield, BarChart3 } from "lucide-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 const Landing = () => {
   const [longUrl, setLongUrl] = useState();
   const navigate = useNavigate();
@@ -42,7 +41,7 @@ const Landing = () => {
       </form>
 
       {/* Why Choose Section */}
-      <section className="w-full py-8 md:py-16 lg:py-28 dark:bg-gray-800">
+      <section className="w-full py-6 md:py-12 lg:py-18 dark:bg-gray-800">
         <div className="container px-4 md:px-6 mx-auto">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
             Why Choose TynyURL?
@@ -59,7 +58,9 @@ const Landing = () => {
             {/* Feature 2 */}
             <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-white dark:bg-gray-700">
               <Shield className="h-12 w-12 text-primary" />
-              <h3 className="text-xl font-bold text-center">Secure & Reliable</h3>
+              <h3 className="text-xl font-bold text-center">
+                Secure & Reliable
+              </h3>
               <p className="text-sm text-center text-gray-500 dark:text-gray-400">
                 Your links are safe and always accessible.
               </p>
@@ -67,7 +68,9 @@ const Landing = () => {
             {/* Feature 3 */}
             <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-white dark:bg-gray-700">
               <BarChart3 className="h-12 w-12 text-primary" />
-              <h3 className="text-xl font-bold text-center">Detailed Analytics</h3>
+              <h3 className="text-xl font-bold text-center">
+                Detailed Analytics
+              </h3>
               <p className="text-sm text-center text-gray-500 dark:text-gray-400">
                 Track clicks, locations, and more with our powerful dashboard.
               </p>
